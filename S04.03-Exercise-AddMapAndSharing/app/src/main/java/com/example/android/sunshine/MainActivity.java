@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -221,8 +222,27 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             return true;
         }
 
-        // TODO (2) Launch the map when the map menu item is clicked
+        if(id == R.id.action_open_map) {
+            String address = "1600 Amphitheatre Parkway, CA";
+            // TODO (2) Launch the map when the map menu item is clicked
+            Uri.Builder builder = new Uri.Builder();
+            Uri uri = builder.scheme("geo")
+                            .path("0,0")
+                            .query(address)
+                            .build();
 
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            if(intent.resolveActivity(getPackageManager())!=null)
+                startActivity(intent);
+
+            Intent shared = ShareCompat.IntentBuilder.from(this)
+                            .setText("Hello world")
+                            .setType("text/plain")
+                            .getIntent();
+
+            if(shared.resolveActivity(getPackageManager())!=null)
+                startActivity(shared);
+        }
         return super.onOptionsItemSelected(item);
     }
 }

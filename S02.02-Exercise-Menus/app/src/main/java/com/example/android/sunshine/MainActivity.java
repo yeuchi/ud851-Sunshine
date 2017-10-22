@@ -18,11 +18,15 @@ package com.example.android.sunshine;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuInflater;
 import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.android.sunshine.data.SunshinePreferences;
 import com.example.android.sunshine.utilities.NetworkUtils;
 import com.example.android.sunshine.utilities.OpenWeatherJsonUtils;
+
 
 import java.net.URL;
 
@@ -43,6 +47,22 @@ public class MainActivity extends AppCompatActivity {
 
         /* Once all of our views are setup, we can load the weather data. */
         loadWeatherData();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        mWeatherTextView.setText("");
+        loadWeatherData();
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
     }
 
     /**

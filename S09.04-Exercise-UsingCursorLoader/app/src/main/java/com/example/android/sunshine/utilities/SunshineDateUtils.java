@@ -198,7 +198,9 @@ public final class SunshineDateUtils {
      * @return A user-friendly representation of the date such as "Today, June 8", "Tomorrow",
      * or "Friday"
      */
-    public static String getFriendlyDateString(Context context, long normalizedUtcMidnight, boolean showFullDate) {
+    public static String getFriendlyDateString(Context context,
+                                               long normalizedUtcMidnight,
+                                               boolean showFullDate) {
 
         /*
          * NOTE: localDate should be localDateMidnightMillis and should be straight from the

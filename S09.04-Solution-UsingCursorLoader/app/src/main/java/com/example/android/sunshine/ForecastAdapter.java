@@ -104,7 +104,8 @@ class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapt
      * @param position                  The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(ForecastAdapterViewHolder forecastAdapterViewHolder, int position) {
+    public void onBindViewHolder(ForecastAdapterViewHolder forecastAdapterViewHolder,
+                                 int position) {
 //      COMPLETED (5) Delete the current body of onBindViewHolder
 
 //      COMPLETED (6) Move the cursor to the appropriate position
